@@ -36,3 +36,69 @@
     transform: rotate(360deg);
   }
 }
+
+/* body {
+  background-color: black;
+  color: white;
+}
+
+.dark-mode {
+  background-color: #1a1a1a;
+  color: #f5f5f5;
+} */
+
+
+.banner {
+  background-image: url("nfts_banner.png");
+  background-origin: border-box;
+  /* background-color: #cccccc; */
+  height: 10px;
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+}
+
+#darkToggle {
+  float: right;
+  position: fixed !important;
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+
+}
+
+.wrapper {
+  
+  /*This part is important for centering*/
+  display: grid;
+  place-items: left;
+  border-right: 10px;
+}
+
+.typing-demo {
+  width: 40ch;
+  animation: typing 2s steps(20), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  /* background-color: rgb(144, 131, 229); */
+  border-right: 3px solid;
+  font-family: monospace;
+  font-size: 2em;
+  /* color: azure; */
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+    
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
