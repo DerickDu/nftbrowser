@@ -7,6 +7,44 @@ import lightVars from "./components/light.json";
 export default function DarkModeToggle() {
   const [darkMode, setDarkMode] = useState(false);
 
+  const darkmodeFunc = () => {
+    // const toggle = document.getElementById("dark-mode-toggle");
+    const svgElements = document.querySelectorAll(
+      "#nftcoin, #jungle1, #jungle2, #jungle3, #jungle4, #jungle5, #mountain, #manonmountain, #logoland, #artback",
+      "#cloud",
+      "#rect"
+    );
+    const night = document.querySelectorAll(".night");
+
+    night.forEach(function (svg) {
+      // console.log(svg.style.display);
+      if (darkMode === false) {
+        svg.style.display = "block";
+      } else {
+        svg.style.display = "none";
+      }
+    });
+
+    const day = document.querySelectorAll(".day");
+
+    day.forEach(function (svg) {
+      console.log(svg.style.display);
+      if (darkMode === false) {
+        svg.style.display = "none";
+      } else {
+        svg.style.display = "block";
+      }
+    });
+
+    svgElements.forEach(function (svg) {
+      if (darkMode === false) {
+        svg.classList.add("dark");
+      } else {
+        svg.classList.remove("dark");
+      }
+    });
+    setDarkMode(!darkMode);
+  };
   useEffect(() => {
     darkMode
       ? window.less.modifyVars(darkVars)
@@ -17,7 +55,11 @@ export default function DarkModeToggle() {
     <CSSTransition
       in={darkMode}
       classNames="switch"
-      onClick={() => setDarkMode(!darkMode)}
+      onClick={
+        // darkmodeFunc();
+        darkmodeFunc
+        // setDarkMode(!darkMode);
+      }
       timeout={0}
     >
       <svg
