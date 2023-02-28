@@ -92,6 +92,11 @@ function HeaderAnim() {
             style={{ display: "none" }}
           ></div>
         </ParallaxLayer>
+        <ParallaxLayer offset={0} speed={-1.2}>
+          <div class="parallax" id="name">
+            DERICK DU
+          </div>
+        </ParallaxLayer>
         <ParallaxLayer offset={0} speed={0.4}>
           <div class="animation_layer parallax" id="manonmountain"></div>
         </ParallaxLayer>

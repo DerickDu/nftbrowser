@@ -1,3 +1,21 @@
+@font-face {
+  font-family: blockchainFont;
+  src: url(BLOCKCHAIN.ttf);
+}
+
+#name  {
+  width: 100%;
+  font-family: blockchainFont;
+  font-size: 50px;
+  position:fixed;
+  text-align:left;
+  margin-left: 3%;
+  margin-top: 0%;
+  width: auto;
+  top: 0%;
+  transform: rotateZ(-5deg);
+}
+
   .animation, .animation_layer {
       height: 100%;
   }
