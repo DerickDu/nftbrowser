@@ -1,13 +1,36 @@
 import "./App.css";
-import { Button, Card, Input, Layout, List } from "antd";
+import { Button, Input, Layout, List, message } from "antd";
 import { useState } from "react";
 // import DarkModeToggle from "./DarkModeToggle";
 import "./style/Footer.css";
+import { searchNFTs } from "./utils";
+import NftCard from "./components/NftCard";
 // import HeaderAnim from "./HeaderAnim";
 
 const { Header, Footer, Content } = Layout;
+
 function App() {
+  const [nfts, setNfts] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [searchText, setSearchText] = useState("");
+
+  const handleSearch = async () => {
+    if (searchText === "") {
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const data = await searchNFTs(searchText);
+      setNfts(data.result);
+    } catch (error) {
+      message.error(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Layout style={{ height: "100vh" }}>
       {/* <HeaderAnim /> */}
@@ -38,11 +61,15 @@ function App() {
             placeholder="Enter a NFT name to search"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
+            onPressEnter={handleSearch}
           />
-          <Button type="primary">Search</Button>
+          <Button type="primary" onClick={handleSearch}>
+            Search
+          </Button>
         </Input.Group>
 
         <List
+          loading={loading}
           style={{
             marginTop: 20,
             height: "calc(100% - 52px)",
@@ -57,16 +84,8 @@ function App() {
             xl: 4,
             xxl: 4,
           }}
-          dataSource={[
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-            // , 11, 12, 13, 14, 15, 16, 17, 18, 19,
-            // 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-          ]}
-          renderItem={(nft) => (
-            <List.Item key={nft}>
-              <Card title={nft} />
-            </List.Item>
-          )}
+          dataSource={nfts}
+          renderItem={(nft) => <NftCard nft={nft} />}
         />
       </Content>
 
