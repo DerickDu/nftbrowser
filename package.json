@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^4.24.8",
     "antd-theme": "^0.3.4",
+    "gh-pages": "^5.0.0",
     "react": "^18.2.0",
     "react-app-rewire-antd-theme": "^1.1.4",
     "react-dom": "^18.2.0",
